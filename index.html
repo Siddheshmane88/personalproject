@@ -13,32 +13,48 @@
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+      scroll-snap-type: y mandatory;
+    }
+
     body {
       margin: 0;
       font-family: 'Libre Baskerville', serif;
       background: #fafafa;
       color: #222;
       line-height: 1.9;
+      overflow-x: hidden;
     }
 
     .container {
       max-width: 680px;
-      margin: auto;
-      padding: 90px 24px;
+      margin: 0 auto;
     }
 
     section {
-      margin-bottom: 90px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 24px;
       opacity: 0;
-      transform: translateY(18px);
-      animation: fadeUp 1.6s ease forwards;
+      transform: translateY(30px);
+      transition: opacity 1.2s ease, transform 1.2s ease;
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
     }
 
-    section:nth-child(1) { animation-delay: 0.5s; }
-    section:nth-child(2) { animation-delay: 1.6s; }
-    section:nth-child(3) { animation-delay: 2.7s; }
-    section:nth-child(4) { animation-delay: 3.8s; }
-    section:nth-child(5) { animation-delay: 4.9s; }
+    section.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    section .content-wrapper {
+      width: 100%;
+      max-width: 600px;
+    }
 
     h1 {
       font-size: 30px;
@@ -90,24 +106,34 @@
       background: #eaeaea;
     }
 
+    .btn:focus {
+      outline: 2px solid #666;
+      outline-offset: 2px;
+    }
+
+    .btn:focus:not(:focus-visible) {
+      outline: none;
+    }
+
     .hidden-text {
       display: none;
       margin-top: 32px;
       font-size: 15px;
       color: #444;
-      animation: fadeUp 1.6s ease forwards;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+
+    .hidden-text.visible {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .final {
       font-size: 14.5px;
       color: #666;
-    }
-
-    @keyframes fadeUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
     }
 
     /* Very subtle breathing */
@@ -116,6 +142,35 @@
       50% { transform: scale(1.025); }
       100% { transform: scale(1); }
     }
+
+    /* Respect user's motion preferences */
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+      
+      section {
+        transition: opacity 0.3s ease;
+        transform: none;
+      }
+      
+      section.active {
+        transform: none;
+      }
+      
+      .btn {
+        animation: none;
+      }
+      
+      .hidden-text {
+        transition: opacity 0.3s ease;
+        transform: none;
+      }
+      
+      .hidden-text.visible {
+        transform: none;
+      }
+    }
   </style>
 </head>
 <body>
@@ -123,71 +178,122 @@
   <div class="container">
 
     <!-- Section 1 -->
-    <section class="center">
-      <div class="name">For Surabhi</div>
-      <h1>
-        I’m not here to change your mind.<br>
-        I just wanted to be honest.
-      </h1>
+    <section class="center active">
+      <div class="content-wrapper">
+        <div class="name">For Surabhi</div>
+        <h1>
+          I'm not here to change your mind.<br>
+          I just wanted to be honest.
+        </h1>
+      </div>
     </section>
 
     <!-- Section 2 -->
     <section>
-      <h2>Something I need to acknowledge</h2>
-      <p>
-        I didn’t show up the way I should have.<br>
-        I missed understanding how you were feeling, and that caused hurt.<br>
-        Even if it wasn’t intentional, I know that doesn’t make it easier.
-      </p>
+      <div class="content-wrapper">
+        <h2>Something I need to acknowledge</h2>
+        <p>
+          I didn't show up the way I should have.<br>
+          I missed understanding how you were feeling, and that caused hurt.<br>
+          Even if it wasn't intentional, I know that doesn't make it easier.
+        </p>
+      </div>
     </section>
 
     <!-- Section 3 -->
     <section>
-      <h2>Something that remains true</h2>
-      <p>
-        You mattered to me before everything became difficult.<br>
-        You still matter to me now.<br>
-        And that stays true even if distance feels necessary.
-      </p>
+      <div class="content-wrapper">
+        <h2>Something that remains true</h2>
+        <p>
+          You mattered to me before everything became difficult.<br>
+          You still matter to me now.<br>
+          And that stays true even if distance feels necessary.
+        </p>
+      </div>
     </section>
 
     <!-- Section 4 -->
     <section class="center">
-      <p class="apology">
-        I’m sorry — gently and sincerely —<br>
-        for hurting someone I care about and respect.
-      </p>
+      <div class="content-wrapper">
+        <p class="apology">
+          I'm sorry — gently and sincerely —<br>
+          for hurting someone I care about and respect.
+        </p>
+      </div>
     </section>
 
     <!-- Section 5 -->
     <section class="center">
-      <button class="btn" onclick="revealMessage()">
-        You don’t need to open this
-      </button>
+      <div class="content-wrapper">
+        <button class="btn" onclick="revealMessage()" aria-label="Reveal additional message">
+          You don't need to open this
+        </button>
 
-      <div id="hidden" class="hidden-text">
-        <p>
-          There’s no expectation from this page.<br>
-          No reply is needed.<br><br>
-          If one day you feel like talking, I’ll listen.<br>
-          And if not, I still wish you calm, happiness, and good days ahead.
-        </p>
+        <div id="hidden" class="hidden-text" aria-hidden="true">
+          <p>
+            There's no expectation from this page.<br>
+            No reply is needed.<br><br>
+            If one day you feel like talking, I'll listen.<br>
+            And if not, I still wish you calm, happiness, and good days ahead.
+          </p>
+        </div>
       </div>
     </section>
 
     <!-- Final -->
     <section class="center">
-      <p class="final">
-        Some connections stay close.<br>
-        Some quietly teach us how to be better humans.
-      </p>
+      <div class="content-wrapper">
+        <p class="final">
+          Some connections stay close.<br>
+          Some quietly teach us how to be better humans.
+        </p>
+      </div>
     </section>
 
   </div>
 
   <script>
+    const sections = document.querySelectorAll("section");
+    let currentActiveIndex = 0;
+
+    // IntersectionObserver to show one section at a time
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const sectionIndex = Array.from(sections).indexOf(entry.target);
+            
+            // Only activate if this is the next section in sequence or current
+            if (sectionIndex >= currentActiveIndex) {
+              // Remove active from all sections
+              sections.forEach((sec) => sec.classList.remove("active"));
+              
+              // Add active to current section
+              entry.target.classList.add("active");
+              currentActiveIndex = sectionIndex;
+            }
+          }
+        });
+      },
+      {
+        threshold: 0.5, // Section needs to be 50% visible
+        rootMargin: "0px"
+      }
+    );
+
+    // Observe all sections except the first one (already active)
+    sections.forEach((section, index) => {
+      if (index === 0) {
+        // First section is already active
+        return;
+      }
+      observer.observe(section);
+    });
+
     function revealMessage() {
-      document.getElementById("hidden").style.display = "block";
+      const hiddenDiv = document.getElementById("hidden");
+      hiddenDiv.classList.add("visible");
+      hiddenDiv.setAttribute("aria-hidden", "false");
     }
   </script>
 
