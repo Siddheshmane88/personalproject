@@ -5,10 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>One Honest Page</title>
 
-  <!-- Performance: Preconnect to Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  
   <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
 
@@ -20,70 +16,40 @@
     body {
       margin: 0;
       font-family: 'Libre Baskerville', serif;
-      background: #fafafa;
-      color: #222;
-      line-height: 1.9;
+      background: #ffffff;
+      color: #111;
+      line-height: 1.8;
     }
 
     .container {
-      max-width: 680px;
+      max-width: 700px;
       margin: auto;
-      padding: 100px 24px;
+      padding: 80px 24px;
     }
 
-    /* Each paragraph block */
-    .block {
-      margin-bottom: 60px;
+    section {
+      margin-bottom: 90px;
       opacity: 0;
-      transform: translateY(22px);
-      transition: opacity 1.4s ease, transform 1.4s ease;
+      transform: translateY(20px);
+      animation: fadeUp 1.5s ease forwards;
     }
 
-    /* Respect user's motion preferences */
-    @media (prefers-reduced-motion: reduce) {
-      .block {
-        transition: opacity 0.3s ease;
-        transform: none;
-      }
-      
-      .block.visible {
-        transform: none;
-      }
-      
-      .btn {
-        animation: none;
-      }
-      
-      .hidden {
-        transition: opacity 0.3s ease;
-        transform: none;
-      }
-      
-      .hidden.visible {
-        transform: none;
-      }
-    }
-
-    /* Visible state */
-    .block.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .center {
-      text-align: center;
-    }
+    section:nth-child(1) { animation-delay: 0.5s; }
+    section:nth-child(2) { animation-delay: 1.5s; }
+    section:nth-child(3) { animation-delay: 2.5s; }
+    section:nth-child(4) { animation-delay: 3.5s; }
+    section:nth-child(5) { animation-delay: 4.5s; }
 
     h1 {
-      font-size: 30px;
+      font-size: 32px;
       font-weight: 700;
-      margin-bottom: 30px;
+      margin-bottom: 20px;
     }
 
     h2 {
-      font-size: 19px;
+      font-size: 20px;
       font-weight: 700;
-      margin-bottom: 20px;
+      margin-bottom: 16px;
     }
 
     p {
@@ -91,188 +57,127 @@
       margin: 0;
     }
 
-    .name {
-      font-size: 15px;
-      color: #777;
-      margin-bottom: 18px;
+    .center {
+      text-align: center;
     }
 
     .apology {
-      font-size: 21px;
+      font-size: 22px;
       font-weight: 700;
-      color: #333;
     }
 
+    /* Button */
     .btn {
-      margin-top: 28px;
-      padding: 14px 30px;
-      border: 1px solid #aaa;
+      margin-top: 30px;
+      padding: 14px 28px;
+      border: 1px solid #111;
       background: transparent;
       font-family: inherit;
-      font-size: 14.5px;
+      font-size: 15px;
       cursor: pointer;
       transition: all 0.3s ease;
-      animation: breathe 5s ease-in-out infinite;
+      animation: breathe 4s ease-in-out infinite;
     }
 
     .btn:hover {
-      background: #eaeaea;
+      background: #111;
+      color: #fff;
     }
 
-    .btn:focus {
-      outline: 2px solid #666;
-      outline-offset: 2px;
-      background: #eaeaea;
-    }
-
-    .btn:focus:not(:focus-visible) {
-      outline: none;
-    }
-
-    .hidden {
+    .hidden-text {
       display: none;
       margin-top: 30px;
-      opacity: 0;
-      transform: translateY(18px);
-      transition: all 1.4s ease;
-    }
-
-    .hidden.visible {
-      display: block;
-      opacity: 1;
-      transform: translateY(0);
+      font-size: 15px;
+      animation: fadeUp 1.5s ease forwards;
     }
 
     .final {
-      font-size: 14.5px;
-      color: #666;
+      font-size: 15px;
+      color: #444;
     }
 
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Gentle breathing animation (very subtle) */
     @keyframes breathe {
       0% { transform: scale(1); }
-      50% { transform: scale(1.025); }
+      50% { transform: scale(1.03); }
       100% { transform: scale(1); }
     }
   </style>
 </head>
 <body>
 
-<div class="container">
+  <div class="container">
 
-  <!-- FIRST BLOCK (VISIBLE ON LOAD) -->
-  <div class="block center visible">
-    <div class="name">For Surabhi</div>
-    <h1>
-      I’m not here to change your mind.<br>
-      I just wanted to be honest.
-    </h1>
-  </div>
+    <!-- Section 1 -->
+    <section class="center">
+      <h1>I’m not here to convince you.<br>I’m here to be honest.</h1>
+    </section>
 
-  <!-- Everything below is hidden until scroll -->
-
-  <div class="block">
-    <h2>Something I need to acknowledge</h2>
-  </div>
-
-  <div class="block">
-    <p>I didn’t show up the way I should have.</p>
-  </div>
-
-  <div class="block">
-    <p>I missed understanding how you were feeling, and that caused hurt.</p>
-  </div>
-
-  <div class="block">
-    <p>Even if it wasn’t intentional, I know that doesn’t make it easier.</p>
-  </div>
-
-  <div class="block">
-    <h2>Something that remains true</h2>
-  </div>
-
-  <div class="block">
-    <p>You mattered to me before everything became difficult.</p>
-  </div>
-
-  <div class="block">
-    <p>You still matter to me now.</p>
-  </div>
-
-  <div class="block">
-    <p>And that stays true even if distance feels necessary.</p>
-  </div>
-
-  <div class="block center">
-    <p class="apology">
-      I’m sorry — gently and sincerely —<br>
-      for hurting someone I care about and respect.
-    </p>
-  </div>
-
-  <div class="block center">
-    <button class="btn" onclick="revealMessage()" aria-label="Reveal additional message">
-      You don’t need to open this
-    </button>
-
-    <div id="hidden" class="hidden" aria-hidden="true">
+    <!-- Section 2 -->
+    <section>
+      <h2>What I did wrong</h2>
       <p>
-        There’s no expectation from this page.<br>
-        No reply is needed.<br><br>
-        If one day you feel like talking, I’ll listen.<br>
-        And if not, I still wish you calm, happiness, and good days ahead.
+        I hurt you by not understanding your feelings when I should have.<br>
+        I didn’t mean to, but intention doesn’t erase impact.<br>
+        You were right to feel the way you did.
       </p>
-    </div>
+    </section>
+
+    <!-- Section 3 -->
+    <section>
+      <h2>What you mean to me</h2>
+      <p>
+        You mattered to me before this moment.<br>
+        You matter to me now.<br>
+        And you’ll matter to me even if you choose silence.
+      </p>
+    </section>
+
+    <!-- Section 4 -->
+    <section class="center">
+      <p class="apology">
+        I’m sorry — not because I lost you,<br>
+        but because I hurt someone I deeply respect.
+      </p>
+    </section>
+
+    <!-- Section 5 -->
+    <section class="center">
+      <button class="btn" onclick="revealMessage()">
+        You don’t have to click this
+      </button>
+
+      <div id="hidden" class="hidden-text">
+        <p>
+          This page won’t ask for a reply.<br>
+          If you ever want to talk, I’ll be there.<br>
+          If not, I’ll still wish you peace and happiness.
+        </p>
+      </div>
+    </section>
+
+    <!-- Final -->
+    <section class="center">
+      <p class="final">
+        Some people come into our lives to stay.<br>
+        Some come to teach us how to love better.
+      </p>
+    </section>
+
   </div>
 
-  <div class="block center">
-    <p class="final">
-      Some connections stay close.<br>
-      Some quietly teach us how to be better humans.
-    </p>
-  </div>
-
-</div>
-
-<script>
-  const blocks = document.querySelectorAll(".block");
-  let currentVisibleIndex = 0; // Track the first visible block (index 0 is already visible)
-
-  const observer = new IntersectionObserver(
-    entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const blockIndex = Array.from(blocks).indexOf(entry.target);
-          
-          // Only reveal if this is the next block in sequence
-          if (blockIndex === currentVisibleIndex + 1) {
-            entry.target.classList.add("visible");
-            currentVisibleIndex = blockIndex;
-            
-            // Stop observing this block once it's visible
-            observer.unobserve(entry.target);
-          }
-        }
-      });
-    },
-    { 
-      threshold: 0.5, // Block needs to be 50% visible before triggering
-      rootMargin: '0px 0px -20% 0px' // Trigger when block is closer to center
+  <script>
+    function revealMessage() {
+      document.getElementById("hidden").style.display = "block";
     }
-  );
-
-  // Observe all blocks except the first one (which is already visible)
-  blocks.forEach((block, index) => {
-    if (index > 0 && !block.classList.contains("visible")) {
-      observer.observe(block);
-    }
-  });
-
-  function revealMessage() {
-    const hiddenDiv = document.getElementById("hidden");
-    hiddenDiv.classList.add("visible");
-    hiddenDiv.setAttribute("aria-hidden", "false");
-  }
-</script>
+  </script>
 
 </body>
 </html>
