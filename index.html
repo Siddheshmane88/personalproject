@@ -16,38 +16,38 @@
     body {
       margin: 0;
       font-family: 'Libre Baskerville', serif;
-      background: #ffffff;
-      color: #111;
-      line-height: 1.8;
+      background: #fafafa;
+      color: #222;
+      line-height: 1.9;
     }
 
     .container {
-      max-width: 700px;
+      max-width: 680px;
       margin: auto;
-      padding: 80px 24px;
+      padding: 90px 24px;
     }
 
     section {
       margin-bottom: 90px;
       opacity: 0;
-      transform: translateY(20px);
-      animation: fadeUp 1.5s ease forwards;
+      transform: translateY(18px);
+      animation: fadeUp 1.6s ease forwards;
     }
 
     section:nth-child(1) { animation-delay: 0.5s; }
-    section:nth-child(2) { animation-delay: 1.5s; }
-    section:nth-child(3) { animation-delay: 2.5s; }
-    section:nth-child(4) { animation-delay: 3.5s; }
-    section:nth-child(5) { animation-delay: 4.5s; }
+    section:nth-child(2) { animation-delay: 1.6s; }
+    section:nth-child(3) { animation-delay: 2.7s; }
+    section:nth-child(4) { animation-delay: 3.8s; }
+    section:nth-child(5) { animation-delay: 4.9s; }
 
     h1 {
-      font-size: 32px;
+      font-size: 30px;
       font-weight: 700;
       margin-bottom: 20px;
     }
 
     h2 {
-      font-size: 20px;
+      font-size: 19px;
       font-weight: 700;
       margin-bottom: 16px;
     }
@@ -61,39 +61,46 @@
       text-align: center;
     }
 
+    .name {
+      font-size: 15px;
+      color: #777;
+      margin-bottom: 16px;
+    }
+
     .apology {
-      font-size: 22px;
+      font-size: 21px;
       font-weight: 700;
+      color: #333;
     }
 
     /* Button */
     .btn {
-      margin-top: 30px;
-      padding: 14px 28px;
-      border: 1px solid #111;
+      margin-top: 34px;
+      padding: 14px 30px;
+      border: 1px solid #aaa;
       background: transparent;
       font-family: inherit;
-      font-size: 15px;
+      font-size: 14.5px;
       cursor: pointer;
       transition: all 0.3s ease;
-      animation: breathe 4s ease-in-out infinite;
+      animation: breathe 5s ease-in-out infinite;
     }
 
     .btn:hover {
-      background: #111;
-      color: #fff;
+      background: #eaeaea;
     }
 
     .hidden-text {
       display: none;
-      margin-top: 30px;
+      margin-top: 32px;
       font-size: 15px;
-      animation: fadeUp 1.5s ease forwards;
+      color: #444;
+      animation: fadeUp 1.6s ease forwards;
     }
 
     .final {
-      font-size: 15px;
-      color: #444;
+      font-size: 14.5px;
+      color: #666;
     }
 
     @keyframes fadeUp {
@@ -103,10 +110,10 @@
       }
     }
 
-    /* Gentle breathing animation (very subtle) */
+    /* Very subtle breathing */
     @keyframes breathe {
       0% { transform: scale(1); }
-      50% { transform: scale(1.03); }
+      50% { transform: scale(1.025); }
       100% { transform: scale(1); }
     }
   </style>
@@ -117,48 +124,53 @@
 
     <!-- Section 1 -->
     <section class="center">
-      <h1>I’m not here to convince you.<br>I’m here to be honest.</h1>
+      <div class="name">For Surabhi</div>
+      <h1>
+        I’m not here to change your mind.<br>
+        I just wanted to be honest.
+      </h1>
     </section>
 
     <!-- Section 2 -->
     <section>
-      <h2>What I did wrong</h2>
+      <h2>Something I need to acknowledge</h2>
       <p>
-        I hurt you by not understanding your feelings when I should have.<br>
-        I didn’t mean to, but intention doesn’t erase impact.<br>
-        You were right to feel the way you did.
+        I didn’t show up the way I should have.<br>
+        I missed understanding how you were feeling, and that caused hurt.<br>
+        Even if it wasn’t intentional, I know that doesn’t make it easier.
       </p>
     </section>
 
     <!-- Section 3 -->
     <section>
-      <h2>What you mean to me</h2>
+      <h2>Something that remains true</h2>
       <p>
-        You mattered to me before this moment.<br>
-        You matter to me now.<br>
-        And you’ll matter to me even if you choose silence.
+        You mattered to me before everything became difficult.<br>
+        You still matter to me now.<br>
+        And that stays true even if distance feels necessary.
       </p>
     </section>
 
     <!-- Section 4 -->
     <section class="center">
       <p class="apology">
-        I’m sorry — not because I lost you,<br>
-        but because I hurt someone I deeply respect.
+        I’m sorry — gently and sincerely —<br>
+        for hurting someone I care about and respect.
       </p>
     </section>
 
     <!-- Section 5 -->
     <section class="center">
       <button class="btn" onclick="revealMessage()">
-        You don’t have to click this
+        You don’t need to open this
       </button>
 
       <div id="hidden" class="hidden-text">
         <p>
-          This page won’t ask for a reply.<br>
-          If you ever want to talk, I’ll be there.<br>
-          If not, I’ll still wish you peace and happiness.
+          There’s no expectation from this page.<br>
+          No reply is needed.<br><br>
+          If one day you feel like talking, I’ll listen.<br>
+          And if not, I still wish you calm, happiness, and good days ahead.
         </p>
       </div>
     </section>
@@ -166,8 +178,8 @@
     <!-- Final -->
     <section class="center">
       <p class="final">
-        Some people come into our lives to stay.<br>
-        Some come to teach us how to love better.
+        Some connections stay close.<br>
+        Some quietly teach us how to be better humans.
       </p>
     </section>
 
