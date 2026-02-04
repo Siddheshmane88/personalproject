@@ -5,13 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>One Honest Page</title>
 
-  <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
 
   <style>
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     html {
       scroll-behavior: smooth;
@@ -35,7 +32,6 @@
     section {
       min-height: 100vh;
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
       padding: 40px 24px;
@@ -51,7 +47,7 @@
       transform: translateY(0);
     }
 
-    section .content-wrapper {
+    .content-wrapper {
       width: 100%;
       max-width: 600px;
     }
@@ -60,6 +56,7 @@
       font-size: 30px;
       font-weight: 700;
       margin-bottom: 20px;
+      text-align: center;
     }
 
     h2 {
@@ -73,23 +70,21 @@
       margin: 0;
     }
 
-    .center {
-      text-align: center;
-    }
-
     .name {
       font-size: 15px;
       color: #777;
       margin-bottom: 16px;
+      text-align: center;
     }
 
     .apology {
       font-size: 21px;
       font-weight: 700;
       color: #333;
+      text-align: center;
     }
 
-    /* Button */
+    /* Breathing Button */
     .btn {
       margin-top: 34px;
       padding: 14px 30px;
@@ -98,22 +93,18 @@
       font-family: inherit;
       font-size: 14.5px;
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: background 0.3s ease;
       animation: breathe 5s ease-in-out infinite;
     }
 
     .btn:hover {
       background: #eaeaea;
-      animation: none;
     }
 
-    .btn:focus {
-      outline: 2px solid #666;
-      outline-offset: 2px;
-    }
-
-    .btn:focus:not(:focus-visible) {
-      outline: none;
+    @keyframes breathe {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.025); }
+      100% { transform: scale(1); }
     }
 
     .hidden-text {
@@ -135,16 +126,10 @@
     .final {
       font-size: 14.5px;
       color: #666;
+      text-align: center;
     }
 
-    /* Very subtle breathing */
-    @keyframes breathe {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.025); }
-      100% { transform: scale(1); }
-    }
-
-    /* Cat companion */
+    /* Cat */
     .cat-wrapper {
       position: fixed;
       bottom: 24px;
@@ -156,272 +141,134 @@
       z-index: 1;
     }
 
-    .cat-svg {
-      display: block;
-    }
-
-    /* Subtle breathing */
     @keyframes cat-breathe {
-      0%   { transform: scale(1); }
-      50%  { transform: scale(1.04); }
+      0% { transform: scale(1); }
+      50% { transform: scale(1.04); }
       100% { transform: scale(1); }
     }
 
-    /* Respect user's motion preferences */
     @media (prefers-reduced-motion: reduce) {
-      html {
-        scroll-behavior: auto;
-      }
-      
-      section {
-        transition: opacity 0.3s ease;
-        transform: none;
-      }
-      
-      section.active {
-        transform: none;
-      }
-      
-      .btn {
-        animation: none;
-      }
-      
-      .hidden-text {
-        transition: opacity 0.3s ease;
-        transform: none;
-      }
-      
-      .hidden-text.visible {
-        transform: none;
-      }
-      
-      .cat-wrapper {
-        animation: none;
-      }
+      html { scroll-behavior: auto; }
+      section { transition: none; transform: none; }
+      .btn { animation: none; }
+      .cat-wrapper { animation: none; }
     }
   </style>
 </head>
 <body>
 
-  <div class="container">
+<div class="container">
 
-    <!-- Section 1 -->
-    <section class="center active">
-      <div class="content-wrapper">
-        <div class="name">For Surabhi</div>
-        <h1>
-          I'm not here to change your mind.<br>
-          I just wanted to be honest.
-        </h1>
-        <p style="margin-top:40px; font-size:13px; color:#999;">
-          scroll when you feel ready
-        </p>
-      </div>
-    </section>
+  <section class="active">
+    <div class="content-wrapper">
+      <div class="name">For Surabhi</div>
+      <h1>I’m not here to change your mind.<br>I just wanted to be honest.</h1>
+      <p style="margin-top:40px;font-size:13px;color:#999;text-align:center;">
+        scroll when you feel ready
+      </p>
+    </div>
+  </section>
 
-    <!-- Section 2 -->
-    <section>
-      <div class="content-wrapper">
-        <h2>Something I need to acknowledge</h2>
+  <section>
+    <div class="content-wrapper">
+      <h2>Something I need to acknowledge</h2>
+      <p>
+        I didn't show up the way I wish I had.<br>
+        I missed understanding how you were feeling, and that caused hurt.<br>
+        Even if it wasn't intentional, I know that doesn't make it easier.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <div class="content-wrapper">
+      <h2>Something that remains true</h2>
+      <p>
+        You mattered to me before everything became difficult.<br>
+        You still matter to me now.<br>
+        And that stays true even if distance feels necessary.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <div class="content-wrapper">
+      <p class="apology">
+        I'm sorry — gently and sincerely —<br>
+        for hurting someone I care about and deeply respect.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <div class="content-wrapper" style="text-align:center;">
+      <button class="btn" onclick="document.getElementById('hidden').classList.add('visible')">
+        You don’t have to open this
+      </button>
+
+      <div id="hidden" class="hidden-text">
         <p>
-          I didn't show up the way I wish I had.<br>
-          I missed understanding how you were feeling, and that caused hurt.<br>
-          Even if it wasn't intentional, I know that doesn't make it easier.
+          There’s no expectation from this page.<br>
+          No reply is needed.<br><br>
+          If one day you feel like talking, I’ll listen.<br>
+          And if not, I still wish you calm, happiness, and good days ahead.
         </p>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Section 3 -->
-    <section>
-      <div class="content-wrapper">
-        <h2>Something that remains true</h2>
-        <p>
-          You mattered to me before everything became difficult.<br>
-          You still matter to me now.<br>
-          And that stays true even if distance feels necessary.
-        </p>
-      </div>
-    </section>
+  <section>
+    <div class="content-wrapper">
+      <p class="final">
+        Some connections stay close.<br>
+        Some quietly teach us how to be better humans.
+      </p>
+      <p style="margin-top:40px;font-size:13px;color:#999;text-align:center;">
+        — with care, always
+      </p>
+    </div>
+  </section>
 
-    <!-- Section 4 -->
-    <section class="center">
-      <div class="content-wrapper">
-        <p class="apology">
-          I'm sorry — gently and sincerely —<br>
-          for hurting someone I care about and deeply respect.
-        </p>
-      </div>
-    </section>
+</div>
 
-    <!-- Section 5 -->
-    <section class="center">
-      <div class="content-wrapper">
-        <button class="btn" onclick="revealMessage()" aria-label="Reveal additional message">
-          You don't have to open this
-        </button>
+<div class="cat-wrapper" aria-hidden="true">
+  <svg width="110" height="90" viewBox="0 0 110 90" fill="none"
+       xmlns="http://www.w3.org/2000/svg">
+    <path
+      d="M20 60 C20 40,35 30,50 32 C60 18,80 18,85 32 C95 38,95 55,85 60
+         C78 65,65 65,55 60 C45 55,35 55,30 60 C26 64,22 64,20 60 Z"
+      stroke="#555" stroke-width="1.6"
+      stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="55" cy="32" r="11" stroke="#555" stroke-width="1.6"/>
+    <path d="M47 24 L43 16 L50 22" stroke="#555" stroke-width="1.6"
+          stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M63 24 L67 16 L60 22" stroke="#555" stroke-width="1.6"
+          stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="52" cy="32" r="1.4" fill="#555"/>
+    <circle cx="58" cy="32" r="1.4" fill="#555"/>
+  </svg>
+</div>
 
-        <div id="hidden" class="hidden-text" aria-hidden="true">
-          <p>
-            There's no expectation from this page.<br>
-            No reply is needed.<br><br>
-            If one day you feel like talking, I'll listen.<br>
-            And if not, I still wish you calm, happiness, and good days ahead.
-          </p>
-        </div>
-      </div>
-    </section>
+<script>
+  const sections = document.querySelectorAll("section");
+  const observer = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !entry.target.classList.contains("active")) {
+          sections.forEach(s => s.classList.remove("active"));
+          entry.target.classList.add("active");
+        }
+      });
+    },
+    { threshold: 0.5 }
+  );
+  sections.forEach(section => observer.observe(section));
 
-    <!-- Final -->
-    <section class="center">
-      <div class="content-wrapper">
-        <p class="final">
-          Some connections stay close.<br>
-          Some quietly teach us how to be better humans.
-        </p>
-        <p style="margin-top:40px; font-size:13px; color:#999;">
-          — with care, always
-        </p>
-      </div>
-    </section>
-
-  </div>
-
-  <!-- Quiet cat companion -->
-  <div class="cat-wrapper" aria-hidden="true">
-    <svg
-      width="100"
-      height="100"
-      viewBox="0 0 100 100"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      class="cat-svg"
-    >
-      <!-- Tail (curled around) -->
-      <path
-        d="M25 70 Q15 60, 20 50 Q25 45, 30 50"
-        stroke="#444"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        fill="none"
-      />
-
-      <!-- Body (sitting position - rounded bottom) -->
-      <ellipse
-        cx="50"
-        cy="65"
-        rx="18"
-        ry="20"
-        stroke="#444"
-        stroke-width="2"
-        fill="none"
-      />
-
-      <!-- Chest (front of sitting cat) -->
-      <path
-        d="M40 65 Q50 55, 60 65"
-        stroke="#444"
-        stroke-width="2"
-        stroke-linecap="round"
-        fill="none"
-      />
-
-      <!-- Head -->
-      <circle
-        cx="50"
-        cy="40"
-        r="12"
-        stroke="#444"
-        stroke-width="2"
-        fill="none"
-      />
-
-      <!-- Ears (triangular) -->
-      <path
-        d="M42 32 L38 24 L45 30 Z"
-        stroke="#444"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        fill="none"
-      />
-      <path
-        d="M58 32 L62 24 L55 30 Z"
-        stroke="#444"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        fill="none"
-      />
-
-      <!-- Eyes (very neutral) -->
-      <circle cx="46" cy="40" r="1.5" fill="#444"/>
-      <circle cx="54" cy="40" r="1.5" fill="#444"/>
-    </svg>
-  </div>
-
-  <script>
-    const sections = document.querySelectorAll("section");
-
-    // IntersectionObserver to show one section at a time
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            // Remove active from all sections
-            sections.forEach((sec) => sec.classList.remove("active"));
-            
-            // Add active to current intersecting section
-            entry.target.classList.add("active");
-          }
-        });
-      },
-      {
-        threshold: 0.5, // Section needs to be 50% visible
-        rootMargin: "0px"
-      }
-    );
-
-    // Observe all sections
-    sections.forEach((section) => {
-      observer.observe(section);
-    });
-
-    function revealMessage() {
-      const hiddenDiv = document.getElementById("hidden");
-      hiddenDiv.classList.add("visible");
-      hiddenDiv.setAttribute("aria-hidden", "false");
-      
-      // Stop button animation after click
-      const btn = document.querySelector('.btn');
-      if (btn) {
-        btn.style.animation = 'none';
-      }
-    }
-    
-    // Stop button animation after first hover
-    document.addEventListener('DOMContentLoaded', function() {
-      const btn = document.querySelector('.btn');
-      if (btn) {
-        let hovered = false;
-        btn.addEventListener('mouseenter', function() {
-          if (!hovered) {
-            hovered = true;
-            setTimeout(() => {
-              btn.style.animation = 'none';
-            }, 100);
-          }
-        });
-      }
-    });
-
-    // Cat fades slightly while scrolling (respectful)
-    window.addEventListener("scroll", () => {
-      const cat = document.querySelector(".cat-wrapper");
-      if (!cat) return;
-      cat.style.opacity = window.scrollY > 50 ? "0.22" : "0.35";
-    });
-  </script>
+  window.addEventListener("scroll", () => {
+    const cat = document.querySelector(".cat-wrapper");
+    cat.style.opacity = window.scrollY > 50 ? "0.22" : "0.35";
+  });
+</script>
 
 </body>
 </html>
