@@ -289,55 +289,74 @@
   <!-- Quiet cat companion -->
   <div class="cat-wrapper" aria-hidden="true">
     <svg
-      width="120"
-      height="90"
-      viewBox="0 0 120 90"
+      width="100"
+      height="100"
+      viewBox="0 0 100 100"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       class="cat-svg"
     >
-      <!-- Body + tail -->
+      <!-- Tail (curled around) -->
       <path
-        d="M20 60
-           C20 40, 35 30, 50 35
-           C60 20, 80 20, 85 35
-           C95 40, 95 55, 85 60
-           C80 65, 65 65, 55 60
-           C45 55, 35 55, 30 60
-           C25 65, 20 65, 20 60
-           Z"
+        d="M25 70 Q15 60, 20 50 Q25 45, 30 50"
         stroke="#444"
         stroke-width="2"
         stroke-linecap="round"
         stroke-linejoin="round"
+        fill="none"
+      />
+
+      <!-- Body (sitting position - rounded bottom) -->
+      <ellipse
+        cx="50"
+        cy="65"
+        rx="18"
+        ry="20"
+        stroke="#444"
+        stroke-width="2"
+        fill="none"
+      />
+
+      <!-- Chest (front of sitting cat) -->
+      <path
+        d="M40 65 Q50 55, 60 65"
+        stroke="#444"
+        stroke-width="2"
+        stroke-linecap="round"
+        fill="none"
       />
 
       <!-- Head -->
       <circle
-        cx="55"
-        cy="30"
-        r="10"
+        cx="50"
+        cy="40"
+        r="12"
         stroke="#444"
         stroke-width="2"
+        fill="none"
       />
 
-      <!-- Ears -->
+      <!-- Ears (triangular) -->
       <path
-        d="M48 20 L44 14"
+        d="M42 32 L38 24 L45 30 Z"
         stroke="#444"
         stroke-width="2"
         stroke-linecap="round"
+        stroke-linejoin="round"
+        fill="none"
       />
       <path
-        d="M62 20 L66 14"
+        d="M58 32 L62 24 L55 30 Z"
         stroke="#444"
         stroke-width="2"
         stroke-linecap="round"
+        stroke-linejoin="round"
+        fill="none"
       />
 
       <!-- Eyes (very neutral) -->
-      <circle cx="52" cy="30" r="1.5" fill="#444"/>
-      <circle cx="58" cy="30" r="1.5" fill="#444"/>
+      <circle cx="46" cy="40" r="1.5" fill="#444"/>
+      <circle cx="54" cy="40" r="1.5" fill="#444"/>
     </svg>
   </div>
 
