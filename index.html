@@ -27,30 +27,33 @@
       padding: 90px 24px;
     }
 
-    /* Scroll reveal base */
-    section {
-      margin-bottom: 90px;
+    /* Paragraph block */
+    .block {
+      margin-bottom: 60px;
       opacity: 0;
       transform: translateY(22px);
       transition: opacity 1.4s ease, transform 1.4s ease;
     }
 
-    /* When visible */
-    section.visible {
+    .block.visible {
       opacity: 1;
       transform: translateY(0);
+    }
+
+    .center {
+      text-align: center;
     }
 
     h1 {
       font-size: 30px;
       font-weight: 700;
-      margin-bottom: 20px;
+      margin-bottom: 30px;
     }
 
     h2 {
       font-size: 19px;
       font-weight: 700;
-      margin-bottom: 16px;
+      margin-bottom: 20px;
     }
 
     p {
@@ -58,14 +61,10 @@
       margin: 0;
     }
 
-    .center {
-      text-align: center;
-    }
-
     .name {
       font-size: 15px;
       color: #777;
-      margin-bottom: 16px;
+      margin-bottom: 18px;
     }
 
     .apology {
@@ -76,7 +75,7 @@
 
     /* Button */
     .btn {
-      margin-top: 34px;
+      margin-top: 28px;
       padding: 14px 30px;
       border: 1px solid #aaa;
       background: transparent;
@@ -91,17 +90,15 @@
       background: #eaeaea;
     }
 
-    .hidden-text {
+    .hidden {
       display: none;
-      margin-top: 32px;
-      font-size: 15px;
-      color: #444;
+      margin-top: 30px;
       opacity: 0;
       transform: translateY(18px);
       transition: all 1.4s ease;
     }
 
-    .hidden-text.visible {
+    .hidden.visible {
       display: block;
       opacity: 1;
       transform: translateY(0);
@@ -112,7 +109,6 @@
       color: #666;
     }
 
-    /* Very subtle breathing */
     @keyframes breathe {
       0% { transform: scale(1); }
       50% { transform: scale(1.025); }
@@ -122,96 +118,117 @@
 </head>
 <body>
 
-  <div class="container">
+<div class="container">
 
-    <!-- Section 1 (visible immediately) -->
-    <section class="center visible">
-      <div class="name">For Surabhi</div>
-      <h1>
-        I’m not here to change your mind.<br>
-        I just wanted to be honest.
-      </h1>
-    </section>
-
-    <!-- Section 2 -->
-    <section>
-      <h2>Something I need to acknowledge</h2>
-      <p>
-        I didn’t show up the way I should have.<br>
-        I missed understanding how you were feeling, and that caused hurt.<br>
-        Even if it wasn’t intentional, I know that doesn’t make it easier.
-      </p>
-    </section>
-
-    <!-- Section 3 -->
-    <section>
-      <h2>Something that remains true</h2>
-      <p>
-        You mattered to me before everything became difficult.<br>
-        You still matter to me now.<br>
-        And that stays true even if distance feels necessary.
-      </p>
-    </section>
-
-    <!-- Section 4 -->
-    <section class="center">
-      <p class="apology">
-        I’m sorry — gently and sincerely —<br>
-        for hurting someone I care about and respect.
-      </p>
-    </section>
-
-    <!-- Section 5 -->
-    <section class="center">
-      <button class="btn" onclick="revealMessage()">
-        You don’t need to open this
-      </button>
-
-      <div id="hidden" class="hidden-text">
-        <p>
-          There’s no expectation from this page.<br>
-          No reply is needed.<br><br>
-          If one day you feel like talking, I’ll listen.<br>
-          And if not, I still wish you calm, happiness, and good days ahead.
-        </p>
-      </div>
-    </section>
-
-    <!-- Final -->
-    <section class="center">
-      <p class="final">
-        Some connections stay close.<br>
-        Some quietly teach us how to be better humans.
-      </p>
-    </section>
-
+  <!-- Block 1 -->
+  <div class="block center visible">
+    <div class="name">For Surabhi</div>
+    <h1>
+      I’m not here to change your mind.<br>
+      I just wanted to be honest.
+    </h1>
   </div>
 
-  <script>
-    // Scroll-based reveal
-    const sections = document.querySelectorAll("section");
+  <!-- Block 2 -->
+  <div class="block">
+    <h2>Something I need to acknowledge</h2>
+  </div>
 
-    const observer = new IntersectionObserver(
-      entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-          }
-        });
-      },
-      { threshold: 0.15 }
-    );
+  <div class="block">
+    <p>
+      I didn’t show up the way I should have.
+    </p>
+  </div>
 
-    sections.forEach(section => {
-      observer.observe(section);
-    });
+  <div class="block">
+    <p>
+      I missed understanding how you were feeling, and that caused hurt.
+    </p>
+  </div>
 
-    // Button reveal
-    function revealMessage() {
-      const hidden = document.getElementById("hidden");
-      hidden.classList.add("visible");
-    }
-  </script>
+  <div class="block">
+    <p>
+      Even if it wasn’t intentional, I know that doesn’t make it easier.
+    </p>
+  </div>
+
+  <!-- Block 3 -->
+  <div class="block">
+    <h2>Something that remains true</h2>
+  </div>
+
+  <div class="block">
+    <p>
+      You mattered to me before everything became difficult.
+    </p>
+  </div>
+
+  <div class="block">
+    <p>
+      You still matter to me now.
+    </p>
+  </div>
+
+  <div class="block">
+    <p>
+      And that stays true even if distance feels necessary.
+    </p>
+  </div>
+
+  <!-- Block 4 -->
+  <div class="block center">
+    <p class="apology">
+      I’m sorry — gently and sincerely —<br>
+      for hurting someone I care about and respect.
+    </p>
+  </div>
+
+  <!-- Block 5 -->
+  <div class="block center">
+    <button class="btn" onclick="revealMessage()">
+      You don’t need to open this
+    </button>
+
+    <div id="hidden" class="hidden">
+      <p>
+        There’s no expectation from this page.<br>
+        No reply is needed.<br><br>
+        If one day you feel like talking, I’ll listen.<br>
+        And if not, I still wish you calm, happiness, and good days ahead.
+      </p>
+    </div>
+  </div>
+
+  <!-- Final -->
+  <div class="block center">
+    <p class="final">
+      Some connections stay close.<br>
+      Some quietly teach us how to be better humans.
+    </p>
+  </div>
+
+</div>
+
+<script>
+  const blocks = document.querySelectorAll(".block");
+
+  const observer = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    },
+    { threshold: 0.2 }
+  );
+
+  blocks.forEach(block => observer.observe(block));
+
+  function revealMessage() {
+    document.getElementById("hidden").classList.add("visible");
+  }
+</script>
 
 </body>
 </html>
