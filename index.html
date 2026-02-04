@@ -24,10 +24,10 @@
     .container {
       max-width: 680px;
       margin: auto;
-      padding: 90px 24px;
+      padding: 100px 24px;
     }
 
-    /* Paragraph block */
+    /* Each paragraph block */
     .block {
       margin-bottom: 60px;
       opacity: 0;
@@ -35,6 +35,7 @@
       transition: opacity 1.4s ease, transform 1.4s ease;
     }
 
+    /* Visible state */
     .block.visible {
       opacity: 1;
       transform: translateY(0);
@@ -73,7 +74,6 @@
       color: #333;
     }
 
-    /* Button */
     .btn {
       margin-top: 28px;
       padding: 14px 30px;
@@ -120,7 +120,7 @@
 
 <div class="container">
 
-  <!-- Block 1 -->
+  <!-- FIRST BLOCK (VISIBLE ON LOAD) -->
   <div class="block center visible">
     <div class="name">For Surabhi</div>
     <h1>
@@ -129,53 +129,40 @@
     </h1>
   </div>
 
-  <!-- Block 2 -->
+  <!-- Everything below is hidden until scroll -->
+
   <div class="block">
     <h2>Something I need to acknowledge</h2>
   </div>
 
   <div class="block">
-    <p>
-      I didn’t show up the way I should have.
-    </p>
+    <p>I didn’t show up the way I should have.</p>
   </div>
 
   <div class="block">
-    <p>
-      I missed understanding how you were feeling, and that caused hurt.
-    </p>
+    <p>I missed understanding how you were feeling, and that caused hurt.</p>
   </div>
 
   <div class="block">
-    <p>
-      Even if it wasn’t intentional, I know that doesn’t make it easier.
-    </p>
+    <p>Even if it wasn’t intentional, I know that doesn’t make it easier.</p>
   </div>
 
-  <!-- Block 3 -->
   <div class="block">
     <h2>Something that remains true</h2>
   </div>
 
   <div class="block">
-    <p>
-      You mattered to me before everything became difficult.
-    </p>
+    <p>You mattered to me before everything became difficult.</p>
   </div>
 
   <div class="block">
-    <p>
-      You still matter to me now.
-    </p>
+    <p>You still matter to me now.</p>
   </div>
 
   <div class="block">
-    <p>
-      And that stays true even if distance feels necessary.
-    </p>
+    <p>And that stays true even if distance feels necessary.</p>
   </div>
 
-  <!-- Block 4 -->
   <div class="block center">
     <p class="apology">
       I’m sorry — gently and sincerely —<br>
@@ -183,7 +170,6 @@
     </p>
   </div>
 
-  <!-- Block 5 -->
   <div class="block center">
     <button class="btn" onclick="revealMessage()">
       You don’t need to open this
@@ -199,7 +185,6 @@
     </div>
   </div>
 
-  <!-- Final -->
   <div class="block center">
     <p class="final">
       Some connections stay close.<br>
@@ -223,7 +208,11 @@
     { threshold: 0.2 }
   );
 
-  blocks.forEach(block => observer.observe(block));
+  blocks.forEach(block => {
+    if (!block.classList.contains("visible")) {
+      observer.observe(block);
+    }
+  });
 
   function revealMessage() {
     document.getElementById("hidden").classList.add("visible");
