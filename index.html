@@ -1,3 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>One Honest Page</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Libre Baskerville', serif;
+      background: #ffffff;
+      color: #111;
+      line-height: 1.8;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: auto;
+      padding: 80px 24px;
+    }
+
+    section {
+      margin-bottom: 90px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 1.5s ease forwards;
+    }
+
+    section:nth-child(1) { animation-delay: 0.5s; }
+    section:nth-child(2) { animation-delay: 1.5s; }
+    section:nth-child(3) { animation-delay: 2.5s; }
+    section:nth-child(4) { animation-delay: 3.5s; }
+    section:nth-child(5) { animation-delay: 4.5s; }
+
+    h1 {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    p {
+      font-size: 16px;
+      margin: 0;
+    }
+
+    .center {
+      text-align: center;
+    }
+
+    .apology {
+      font-size: 22px;
+      font-weight: 700;
+    }
+
+    /* Button */
+    .btn {
+      margin-top: 30px;
+      padding: 14px 28px;
+      border: 1px solid #111;
+      background: transparent;
+      font-family: inherit;
+      font-size: 15px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      animation: breathe 4s ease-in-out infinite;
+    }
+
+    .btn:hover {
+      background: #111;
+      color: #fff;
+    }
+
+    .hidden-text {
+      display: none;
+      margin-top: 30px;
+      font-size: 15px;
+      animation: fadeUp 1.5s ease forwards;
+    }
+
+    .final {
+      font-size: 15px;
+      color: #444;
+    }
+
+    @keyframes fadeUp {
+      to {
     <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -54,6 +154,87 @@
         section.active {
         opacity: 1;
         transform: translateY(0);
+      }
+    }
+
+    /* Gentle breathing animation (very subtle) */
+    @keyframes breathe {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.03); }
+      100% { transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- Section 1 -->
+    <section class="center">
+      <h1>I’m not here to convince you.<br>I’m here to be honest.</h1>
+    </section>
+
+    <!-- Section 2 -->
+    <section>
+      <h2>What I did wrong</h2>
+      <p>
+        I hurt you by not understanding your feelings when I should have.<br>
+        I didn’t mean to, but intention doesn’t erase impact.<br>
+        You were right to feel the way you did.
+      </p>
+    </section>
+
+    <!-- Section 3 -->
+    <section>
+      <h2>What you mean to me</h2>
+      <p>
+        You mattered to me before this moment.<br>
+        You matter to me now.<br>
+        And you’ll matter to me even if you choose silence.
+      </p>
+    </section>
+
+    <!-- Section 4 -->
+    <section class="center">
+      <p class="apology">
+        I’m sorry — not because I lost you,<br>
+        but because I hurt someone I deeply respect.
+      </p>
+    </section>
+
+    <!-- Section 5 -->
+    <section class="center">
+      <button class="btn" onclick="revealMessage()">
+        You don’t have to click this
+      </button>
+
+      <div id="hidden" class="hidden-text">
+        <p>
+          This page won’t ask for a reply.<br>
+          If you ever want to talk, I’ll be there.<br>
+          If not, I’ll still wish you peace and happiness.
+        </p>
+      </div>
+    </section>
+
+    <!-- Final -->
+    <section class="center">
+      <p class="final">
+        Some people come into our lives to stay.<br>
+        Some come to teach us how to love better.
+      </p>
+    </section>
+
+  </div>
+
+  <script>
+    function revealMessage() {
+      document.getElementById("hidden").style.display = "block";
+    }
+  </script>
+
+</body>
+</html>
         }
 
         section .content {
