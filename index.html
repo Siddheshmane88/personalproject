@@ -21,7 +21,7 @@
     body {
       margin: 0;
       font-family: 'Libre Baskerville', serif;
-      background: #fafafa;
+      background: #fbfbf8;
       color: #222;
       line-height: 1.9;
       overflow-x: hidden;
@@ -104,6 +104,7 @@
 
     .btn:hover {
       background: #eaeaea;
+      animation: none;
     }
 
     .btn:focus {
@@ -185,6 +186,9 @@
           I'm not here to change your mind.<br>
           I just wanted to be honest.
         </h1>
+        <p style="margin-top:40px; font-size:13px; color:#999;">
+          scroll when you feel ready
+        </p>
       </div>
     </section>
 
@@ -193,7 +197,7 @@
       <div class="content-wrapper">
         <h2>Something I need to acknowledge</h2>
         <p>
-          I didn't show up the way I should have.<br>
+          I didn't show up the way I wish I had.<br>
           I missed understanding how you were feeling, and that caused hurt.<br>
           Even if it wasn't intentional, I know that doesn't make it easier.
         </p>
@@ -217,7 +221,7 @@
       <div class="content-wrapper">
         <p class="apology">
           I'm sorry — gently and sincerely —<br>
-          for hurting someone I care about and respect.
+          for hurting someone I care about and deeply respect.
         </p>
       </div>
     </section>
@@ -226,7 +230,7 @@
     <section class="center">
       <div class="content-wrapper">
         <button class="btn" onclick="revealMessage()" aria-label="Reveal additional message">
-          You don't need to open this
+          You don't have to open this
         </button>
 
         <div id="hidden" class="hidden-text" aria-hidden="true">
@@ -246,6 +250,9 @@
         <p class="final">
           Some connections stay close.<br>
           Some quietly teach us how to be better humans.
+        </p>
+        <p style="margin-top:40px; font-size:13px; color:#999;">
+          — with care, always
         </p>
       </div>
     </section>
@@ -283,7 +290,29 @@
       const hiddenDiv = document.getElementById("hidden");
       hiddenDiv.classList.add("visible");
       hiddenDiv.setAttribute("aria-hidden", "false");
+      
+      // Stop button animation after click
+      const btn = document.querySelector('.btn');
+      if (btn) {
+        btn.style.animation = 'none';
+      }
     }
+    
+    // Stop button animation after first hover
+    document.addEventListener('DOMContentLoaded', function() {
+      const btn = document.querySelector('.btn');
+      if (btn) {
+        let hovered = false;
+        btn.addEventListener('mouseenter', function() {
+          if (!hovered) {
+            hovered = true;
+            setTimeout(() => {
+              btn.style.animation = 'none';
+            }, 100);
+          }
+        });
+      }
+    });
   </script>
 
 </body>
