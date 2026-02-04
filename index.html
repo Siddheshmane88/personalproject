@@ -144,6 +144,29 @@
       100% { transform: scale(1); }
     }
 
+    /* Cat companion */
+    .cat-wrapper {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      opacity: 0.35;
+      pointer-events: none;
+      animation: cat-breathe 6s ease-in-out infinite;
+      transition: opacity 0.6s ease;
+      z-index: 1;
+    }
+
+    .cat-svg {
+      display: block;
+    }
+
+    /* Subtle breathing */
+    @keyframes cat-breathe {
+      0%   { transform: scale(1); }
+      50%  { transform: scale(1.04); }
+      100% { transform: scale(1); }
+    }
+
     /* Respect user's motion preferences */
     @media (prefers-reduced-motion: reduce) {
       html {
@@ -170,6 +193,10 @@
       
       .hidden-text.visible {
         transform: none;
+      }
+      
+      .cat-wrapper {
+        animation: none;
       }
     }
   </style>
@@ -259,6 +286,61 @@
 
   </div>
 
+  <!-- Quiet cat companion -->
+  <div class="cat-wrapper" aria-hidden="true">
+    <svg
+      width="120"
+      height="90"
+      viewBox="0 0 120 90"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      class="cat-svg"
+    >
+      <!-- Body + tail -->
+      <path
+        d="M20 60
+           C20 40, 35 30, 50 35
+           C60 20, 80 20, 85 35
+           C95 40, 95 55, 85 60
+           C80 65, 65 65, 55 60
+           C45 55, 35 55, 30 60
+           C25 65, 20 65, 20 60
+           Z"
+        stroke="#444"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+
+      <!-- Head -->
+      <circle
+        cx="55"
+        cy="30"
+        r="10"
+        stroke="#444"
+        stroke-width="2"
+      />
+
+      <!-- Ears -->
+      <path
+        d="M48 20 L44 14"
+        stroke="#444"
+        stroke-width="2"
+        stroke-linecap="round"
+      />
+      <path
+        d="M62 20 L66 14"
+        stroke="#444"
+        stroke-width="2"
+        stroke-linecap="round"
+      />
+
+      <!-- Eyes (very neutral) -->
+      <circle cx="52" cy="30" r="1.5" fill="#444"/>
+      <circle cx="58" cy="30" r="1.5" fill="#444"/>
+    </svg>
+  </div>
+
   <script>
     const sections = document.querySelectorAll("section");
 
@@ -312,6 +394,13 @@
           }
         });
       }
+    });
+
+    // Cat fades slightly while scrolling (respectful)
+    window.addEventListener("scroll", () => {
+      const cat = document.querySelector(".cat-wrapper");
+      if (!cat) return;
+      cat.style.opacity = window.scrollY > 50 ? "0.22" : "0.35";
     });
   </script>
 
