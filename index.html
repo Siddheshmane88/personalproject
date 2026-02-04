@@ -27,18 +27,19 @@
       padding: 90px 24px;
     }
 
+    /* Scroll reveal base */
     section {
       margin-bottom: 90px;
       opacity: 0;
-      transform: translateY(18px);
-      animation: fadeUp 1.6s ease forwards;
+      transform: translateY(22px);
+      transition: opacity 1.4s ease, transform 1.4s ease;
     }
 
-    section:nth-child(1) { animation-delay: 0.5s; }
-    section:nth-child(2) { animation-delay: 1.6s; }
-    section:nth-child(3) { animation-delay: 2.7s; }
-    section:nth-child(4) { animation-delay: 3.8s; }
-    section:nth-child(5) { animation-delay: 4.9s; }
+    /* When visible */
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
     h1 {
       font-size: 30px;
@@ -95,19 +96,20 @@
       margin-top: 32px;
       font-size: 15px;
       color: #444;
-      animation: fadeUp 1.6s ease forwards;
+      opacity: 0;
+      transform: translateY(18px);
+      transition: all 1.4s ease;
+    }
+
+    .hidden-text.visible {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .final {
       font-size: 14.5px;
       color: #666;
-    }
-
-    @keyframes fadeUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
     }
 
     /* Very subtle breathing */
@@ -122,8 +124,8 @@
 
   <div class="container">
 
-    <!-- Section 1 -->
-    <section class="center">
+    <!-- Section 1 (visible immediately) -->
+    <section class="center visible">
       <div class="name">For Surabhi</div>
       <h1>
         I’m not here to change your mind.<br>
@@ -186,8 +188,28 @@
   </div>
 
   <script>
+    // Scroll-based reveal
+    const sections = document.querySelectorAll("section");
+
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+
+    sections.forEach(section => {
+      observer.observe(section);
+    });
+
+    // Button reveal
     function revealMessage() {
-      document.getElementById("hidden").style.display = "block";
+      const hidden = document.getElementById("hidden");
+      hidden.classList.add("visible");
     }
   </script>
 
