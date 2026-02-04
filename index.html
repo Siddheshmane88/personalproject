@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>One Honest Page</title>
 
+  <!-- Performance: Preconnect to Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
   <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
 
@@ -33,6 +37,31 @@
       opacity: 0;
       transform: translateY(22px);
       transition: opacity 1.4s ease, transform 1.4s ease;
+    }
+
+    /* Respect user's motion preferences */
+    @media (prefers-reduced-motion: reduce) {
+      .block {
+        transition: opacity 0.3s ease;
+        transform: none;
+      }
+      
+      .block.visible {
+        transform: none;
+      }
+      
+      .btn {
+        animation: none;
+      }
+      
+      .hidden {
+        transition: opacity 0.3s ease;
+        transform: none;
+      }
+      
+      .hidden.visible {
+        transform: none;
+      }
     }
 
     /* Visible state */
@@ -88,6 +117,16 @@
 
     .btn:hover {
       background: #eaeaea;
+    }
+
+    .btn:focus {
+      outline: 2px solid #666;
+      outline-offset: 2px;
+      background: #eaeaea;
+    }
+
+    .btn:focus:not(:focus-visible) {
+      outline: none;
     }
 
     .hidden {
@@ -171,11 +210,11 @@
   </div>
 
   <div class="block center">
-    <button class="btn" onclick="revealMessage()">
+    <button class="btn" onclick="revealMessage()" aria-label="Reveal additional message">
       You don’t need to open this
     </button>
 
-    <div id="hidden" class="hidden">
+    <div id="hidden" class="hidden" aria-hidden="true">
       <p>
         There’s no expectation from this page.<br>
         No reply is needed.<br><br>
@@ -196,26 +235,42 @@
 
 <script>
   const blocks = document.querySelectorAll(".block");
+  let currentVisibleIndex = 0; // Track the first visible block (index 0 is already visible)
 
   const observer = new IntersectionObserver(
     entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
+          const blockIndex = Array.from(blocks).indexOf(entry.target);
+          
+          // Only reveal if this is the next block in sequence
+          if (blockIndex === currentVisibleIndex + 1) {
+            entry.target.classList.add("visible");
+            currentVisibleIndex = blockIndex;
+            
+            // Stop observing this block once it's visible
+            observer.unobserve(entry.target);
+          }
         }
       });
     },
-    { threshold: 0.2 }
+    { 
+      threshold: 0.5, // Block needs to be 50% visible before triggering
+      rootMargin: '0px 0px -20% 0px' // Trigger when block is closer to center
+    }
   );
 
-  blocks.forEach(block => {
-    if (!block.classList.contains("visible")) {
+  // Observe all blocks except the first one (which is already visible)
+  blocks.forEach((block, index) => {
+    if (index > 0 && !block.classList.contains("visible")) {
       observer.observe(block);
     }
   });
 
   function revealMessage() {
-    document.getElementById("hidden").classList.add("visible");
+    const hiddenDiv = document.getElementById("hidden");
+    hiddenDiv.classList.add("visible");
+    hiddenDiv.setAttribute("aria-hidden", "false");
   }
 </script>
 
