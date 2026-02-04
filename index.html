@@ -1,298 +1,294 @@
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>One Honest Page</title>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>One Honest Page</title>
 
-    <!-- Performance: Preconnect to Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Performance: Preconnect to Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
 
-    <style>
-        * {
-        box-sizing: border-box;
-        }
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-        html {
-        scroll-behavior: smooth;
-        scroll-snap-type: y mandatory;
-        }
+    html {
+      scroll-behavior: smooth;
+      scroll-snap-type: y mandatory;
+    }
 
-        body {
-        margin: 0;
-        font-family: 'Libre Baskerville', serif;
-        background: #ffffff;
-        color: #111;
-        line-height: 1.8;
-        overflow-x: hidden;
-        }
+    body {
+      margin: 0;
+      font-family: 'Libre Baskerville', serif;
+      background: #ffffff;
+      color: #111;
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
 
-        .container {
-        max-width: 700px;
-        margin: 0 auto;
-        }
+    .container {
+      max-width: 700px;
+      margin: 0 auto;
+    }
 
-        section {
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        padding: 40px 24px;
-        opacity: 0;
-        transform: translateY(30px);
-        transition: opacity 1.2s ease, transform 1.2s ease;
-        position: relative;
-        scroll-snap-align: start;
-        scroll-snap-stop: always;
-        }
+    section {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 24px;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 1.2s ease, transform 1.2s ease;
+      position: relative;
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
+    }
 
-        section.active {
-        opacity: 1;
-        transform: translateY(0);
-        }
+    section.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
-        section .content {
-        width: 100%;
-        max-width: 600px;
-        text-align: left;
-        }
+    section .content {
+      width: 100%;
+      max-width: 600px;
+      text-align: left;
+    }
 
-        h1 {
-        font-size: 32px;
-        font-weight: 700;
-        margin-bottom: 20px;
-        text-align: center;
-        }
+    h1 {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      text-align: center;
+    }
 
-        h2 {
-        font-size: 20px;
-        font-weight: 700;
-        margin-bottom: 16px;
-        }
+    h2 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
 
-        p {
-        font-size: 16px;
-        margin: 0;
-        line-height: 1.8;
-        }
+    p {
+      font-size: 16px;
+      margin: 0;
+      line-height: 1.8;
+    }
 
-        .center {
-        text-align: center;
-        }
+    .center {
+      text-align: center;
+    }
 
-        .center .content {
-        text-align: center;
-        }
+    .center .content {
+      text-align: center;
+    }
 
-        .apology {
-        font-size: 22px;
-        font-weight: 700;
-        }
+    .apology {
+      font-size: 22px;
+      font-weight: 700;
+    }
 
-        /* Button */
-        .btn {
-        margin-top: 30px;
-        padding: 14px 28px;
-        border: 1px solid #111;
-        background: transparent;
-        font-family: inherit;
-        font-size: 15px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        animation: breathe 4s ease-in-out infinite;
-        }
+    /* Button */
+    .btn {
+      margin-top: 30px;
+      padding: 14px 28px;
+      border: 1px solid #111;
+      background: transparent;
+      font-family: inherit;
+      font-size: 15px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      animation: breathe 4s ease-in-out infinite;
+    }
 
-        .btn:hover {
-        background: #111;
-        color: #fff;
-        }
+    .btn:hover {
+      background: #111;
+      color: #fff;
+    }
 
-        .btn:focus {
-        outline: 2px solid #111;
-        outline-offset: 2px;
-        }
+    .btn:focus {
+      outline: 2px solid #111;
+      outline-offset: 2px;
+    }
 
-        .btn:focus:not(:focus-visible) {
-        outline: none;
-        }
+    .btn:focus:not(:focus-visible) {
+      outline: none;
+    }
 
-        .hidden-text {
-        display: none;
-        margin-top: 30px;
-        font-size: 15px;
-        opacity: 0;
-        transform: translateY(10px);
-        transition: opacity 1s ease, transform 1s ease;
-        }
+    .hidden-text {
+      display: none;
+      margin-top: 30px;
+      font-size: 15px;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
 
-        .hidden-text.visible {
-        display: block;
-        opacity: 1;
-        transform: translateY(0);
-        }
+    .hidden-text.visible {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
 
-        .final {
-        font-size: 15px;
-        color: #444;
-        }
+    .final {
+      font-size: 15px;
+      color: #444;
+      margin-top: 30px;
+    }
 
-        @keyframes breathe {
-        0% { transform: scale(1); }
-        50% { transform: scale(1.03); }
-        100% { transform: scale(1); }
-        }
+    @keyframes breathe {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.03); }
+      100% { transform: scale(1); }
+    }
 
-        /* Respect user's motion preferences */
-        @media (prefers-reduced-motion: reduce) {
-        html {
-            scroll-behavior: auto;
-        }
-        
-        section {
-            transition: opacity 0.3s ease;
-            transform: none;
-        }
-        
-        section.active {
-            transform: none;
-        }
-        
-        .btn {
-            animation: none;
-        }
-        
-        .hidden-text {
-            transition: opacity 0.3s ease;
-            transform: none;
-        }
-        
-        .hidden-text.visible {
-            transform: none;
-        }
-        }
-    </style>
-    </head>
-    <body>
+    /* Respect user's motion preferences */
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+      
+      section {
+        transition: opacity 0.3s ease;
+        transform: none;
+      }
+      
+      section.active {
+        transform: none;
+      }
+      
+      .btn {
+        animation: none;
+      }
+      
+      .hidden-text {
+        transition: opacity 0.3s ease;
+        transform: none;
+      }
+      
+      .hidden-text.visible {
+        transform: none;
+      }
+    }
+  </style>
+</head>
+<body>
 
-    <div class="container">
+  <div class="container">
 
-        <!-- Section 1 -->
-        <section class="center active">
-        <div class="content">
-            <h1>I'm not here to convince you.<br>I'm here to be honest.</h1>
+    <!-- Page 1: First message -->
+    <section class="center active">
+      <div class="content">
+        <h1>I'm not here to convince you.<br>I'm here to be honest.</h1>
+      </div>
+    </section>
+
+    <!-- Page 2: What I did wrong -->
+    <section>
+      <div class="content">
+        <h2>What I did wrong</h2>
+        <p>
+          I hurt you by not understanding your feelings when I should have.<br>
+          I didn't mean to, but intention doesn't erase impact.<br>
+          You were right to feel the way you did.
+        </p>
+      </div>
+    </section>
+
+    <!-- Page 3: What you mean to me -->
+    <section>
+      <div class="content">
+        <h2>What you mean to me</h2>
+        <p>
+          You mattered to me before this moment.<br>
+          You matter to me now.<br>
+          And you'll matter to me even if you choose silence.
+        </p>
+      </div>
+    </section>
+
+    <!-- Page 4: Apology -->
+    <section class="center">
+      <div class="content">
+        <p class="apology">
+          I'm sorry — not because I lost you,<br>
+          but because I hurt someone I deeply respect.
+        </p>
+      </div>
+    </section>
+
+    <!-- Page 5: Button + Final message -->
+    <section class="center">
+      <div class="content">
+        <button class="btn" onclick="revealMessage()" aria-label="Reveal additional message">
+          You don't have to click this
+        </button>
+
+        <div id="hidden" class="hidden-text" aria-hidden="true">
+          <p>
+            This page won't ask for a reply.<br>
+            If you ever want to talk, I'll be there.<br>
+            If not, I'll still wish you peace and happiness.
+          </p>
         </div>
-        </section>
 
-        <!-- Section 2 -->
-        <section>
-        <div class="content">
-            <h2>What I did wrong</h2>
-            <p>
-            I hurt you by not understanding your feelings when I should have.<br>
-            I didn't mean to, but intention doesn't erase impact.<br>
-            You were right to feel the way you did.
-            </p>
-        </div>
-        </section>
+        <p class="final">
+          Some people come into our lives to stay.<br>
+          Some come to teach us how to love better.
+        </p>
+      </div>
+    </section>
 
-        <!-- Section 3 -->
-        <section>
-        <div class="content">
-            <h2>What you mean to me</h2>
-            <p>
-            You mattered to me before this moment.<br>
-            You matter to me now.<br>
-            And you'll matter to me even if you choose silence.
-            </p>
-        </div>
-        </section>
+  </div>
 
-        <!-- Section 4 -->
-        <section class="center">
-        <div class="content">
-            <p class="apology">
-            I'm sorry — not because I lost you,<br>
-            but because I hurt someone I deeply respect.
-            </p>
-        </div>
-        </section>
+  <script>
+    const sections = document.querySelectorAll("section");
+    let currentActiveIndex = 0;
 
-        <!-- Section 5 -->
-        <section class="center">
-        <div class="content">
-            <button class="btn" onclick="revealMessage()" aria-label="Reveal additional message">
-            You don't have to click this
-            </button>
-
-            <div id="hidden" class="hidden-text" aria-hidden="true">
-            <p>
-                This page won't ask for a reply.<br>
-                If you ever want to talk, I'll be there.<br>
-                If not, I'll still wish you peace and happiness.
-            </p>
-            </div>
-        </div>
-        </section>
-
-        <!-- Final -->
-        <section class="center">
-        <div class="content">
-            <p class="final">
-            Some people come into our lives to stay.<br>
-            Some come to teach us how to love better.
-            </p>
-        </div>
-        </section>
-
-    </div>
-
-    <script>
-        const sections = document.querySelectorAll("section");
-        let currentActiveIndex = 0;
-
-        // IntersectionObserver to show one section at a time
-        const observer = new IntersectionObserver(
-        (entries) => {
-            entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-                const sectionIndex = Array.from(sections).indexOf(entry.target);
-                
-                // Only activate if this is the next section in sequence or current
-                if (sectionIndex >= currentActiveIndex) {
-                // Remove active from all sections
-                sections.forEach((sec) => sec.classList.remove("active"));
-                
-                // Add active to current section
-                entry.target.classList.add("active");
-                currentActiveIndex = sectionIndex;
-                }
+    // IntersectionObserver to show one section at a time
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const sectionIndex = Array.from(sections).indexOf(entry.target);
+            
+            // Only activate if this is the next section in sequence or current
+            if (sectionIndex >= currentActiveIndex) {
+              // Remove active from all sections
+              sections.forEach((sec) => sec.classList.remove("active"));
+              
+              // Add active to current section
+              entry.target.classList.add("active");
+              currentActiveIndex = sectionIndex;
             }
-            });
-        },
-        {
-            threshold: 0.5, // Section needs to be 50% visible
-            rootMargin: "0px"
-        }
-        );
-
-        // Observe all sections except the first one (already active)
-        sections.forEach((section, index) => {
-        if (index > 0) {
-            observer.observe(section);
-        }
+          }
         });
+      },
+      {
+        threshold: 0.5, // Section needs to be 50% visible
+        rootMargin: "0px"
+      }
+    );
 
-        function revealMessage() {
-        const hiddenDiv = document.getElementById("hidden");
-        hiddenDiv.classList.add("visible");
-        hiddenDiv.setAttribute("aria-hidden", "false");
-        }
-    </script>
+    // Observe all sections except the first one (already active)
+    sections.forEach((section, index) => {
+      if (index > 0) {
+        observer.observe(section);
+      }
+    });
 
-    </body>
-    </html>
+    function revealMessage() {
+      const hiddenDiv = document.getElementById("hidden");
+      hiddenDiv.classList.add("visible");
+      hiddenDiv.setAttribute("aria-hidden", "false");
+    }
+  </script>
+
+</body>
+</html>
